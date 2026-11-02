@@ -1,0 +1,214 @@
+/* ------------------------------------------------------------------
+   NXT GENZ — global styles: reset, brand tokens, typography, buttons.
+   Page-specific styling lives next to each page (pages/*.css).
+------------------------------------------------------------------- */
+
+:root {
+  /* Brand palette — the ONLY colours used on the site */
+  --c1: #EC5E27;
+  --c2: #EC5E27;
+  --c3: #FDFDF1;
+  --c4: #FDFDF1;
+  --c5: #FDFDF1;
+
+  --font-display: 'Sora', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+
+  --header-h: 64px;
+  --radius: 20px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--c1);
+  color: var(--c5);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c4);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--c4);
+  color: var(--c1);
+}
+
+/* ---------- Layout helpers ---------- */
+.wrap {
+  width: min(1180px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--c4);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 2px;
+  background: currentColor;
+}
+
+.grad {
+  background: linear-gradient(100deg, var(--c5), var(--c4) 60%, var(--c3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
+.section-lead {
+  max-width: 60ch;
+  color: var(--c4);
+  font-size: 1.05rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.55rem;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    background 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--c5), var(--c4));
+  color: var(--c1);
+  box-shadow: 0 10px 28px rgba(253, 253, 241, 0.16);
+}
+
+.btn--primary:hover {
+  box-shadow: 0 14px 34px rgba(253, 253, 241, 0.3);
+}
+
+.btn--ghost {
+  border-color: var(--c4);
+  background: transparent;
+  color: var(--c5);
+}
+
+.btn--ghost:hover {
+  background: rgba(253, 253, 241, 0.16);
+}
+
+.btn--dark {
+  border-color: var(--c5);
+  background: var(--c1);
+  color: var(--c5);
+}
+
+.btn svg {
+  width: 1.05em;
+  height: 1.05em;
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

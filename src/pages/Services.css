@@ -1,0 +1,795 @@
+/* ------------------------------------------------------------------
+   Services page
+   Includes adapted Uiverse components:
+   · website option cards ... srinivasaiml  (CSS was not supplied — written to match its markup)
+   · technology orbit ....... Darlley       (Tailwind classes converted to plain CSS)
+------------------------------------------------------------------- */
+
+.services {
+  overflow-x: clip;
+}
+
+.services [id] {
+  scroll-margin-top: calc(var(--header-h) + 3rem);
+}
+
+.svc-section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 62ch;
+  margin-bottom: 3rem;
+}
+
+/* ============================ Hero ============================ */
+.svc-hero {
+  position: relative;
+  padding: 7.5rem 0 5rem;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(253, 253, 241, 0.07) 1px, transparent 1px) 0 0 / 44px 44px,
+    linear-gradient(90deg, rgba(253, 253, 241, 0.07) 1px, transparent 1px) 0 0 / 44px 44px,
+    radial-gradient(50rem 26rem at 50% 0%, rgba(236, 94, 39, 0.85), transparent 70%),
+    var(--c1);
+  text-align: center;
+}
+
+.svc-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.svc-hero h1 {
+  max-width: 18ch;
+  font-size: clamp(2.2rem, 5.4vw, 4.2rem);
+  font-weight: 800;
+}
+
+.svc-hero-lead {
+  max-width: 60ch;
+  font-size: 1.1rem;
+  color: var(--c4);
+}
+
+.jump {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.jump a {
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgba(253, 253, 241, 0.5);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--c5);
+  transition:
+    background 0.25s,
+    color 0.25s,
+    transform 0.25s;
+}
+
+.jump a:hover {
+  background: var(--c5);
+  color: var(--c1);
+  transform: translateY(-2px);
+}
+
+/* ============================ Websites + option cards ============================ */
+.svc-web {
+  background: var(--c1);
+}
+
+.opt-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+
+.opt-wrap {
+  display: flex;
+}
+
+.price-foot {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--c4);
+}
+
+/* --- option card (Uiverse · srinivasaiml) --- */
+.opt-container {
+  display: flex;
+  width: 100%;
+  perspective: 1000px;
+}
+
+.opt-effect {
+  display: flex;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.opt-container:hover .opt-effect,
+.opt-container:focus-within .opt-effect {
+  transform: rotateX(4deg) rotateY(-7deg) translateY(-6px);
+}
+
+.opt-inner {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(253, 253, 241, 0.4);
+  border-radius: 24px;
+  background: linear-gradient(165deg, #EC5E27, #EC5E27 85%);
+  box-shadow: 0 22px 44px rgba(236, 94, 39, 0.55);
+  isolation: isolate;
+}
+
+.opt-liquid {
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  z-index: -1;
+  width: 260%;
+  aspect-ratio: 1;
+  translate: -50% 0;
+  border-radius: 42%;
+  background: linear-gradient(180deg, #FDFDF1, #FDFDF1);
+  animation: liquid-spin 9s linear infinite;
+  transition: top 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.opt-container:hover .opt-liquid,
+.opt-container:focus-within .opt-liquid {
+  top: -42%;
+}
+
+@keyframes liquid-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.opt-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 38%, rgba(253, 253, 241, 0.35) 50%, transparent 62%);
+  background-size: 260% 260%;
+  background-position: 120% 120%;
+  transition: background-position 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.opt-container:hover .opt-shine,
+.opt-container:focus-within .opt-shine {
+  background-position: -20% -20%;
+}
+
+.opt-glow {
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  z-index: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253, 253, 241, 0.55), transparent 70%);
+  opacity: 0.6;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.opt-container:hover .opt-glow {
+  opacity: 1;
+}
+
+.opt-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.1rem;
+}
+
+.opt-badge {
+  align-self: flex-start;
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  background: var(--c5);
+  color: var(--c1);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.opt-badge--ghost {
+  border: 1px solid var(--c4);
+  background: transparent;
+  color: var(--c4);
+  transition:
+    color 0.4s 0.15s,
+    border-color 0.4s 0.15s;
+}
+
+.opt-image {
+  display: grid;
+  place-items: center;
+  height: 150px;
+  border-radius: 16px;
+  background: var(--c5);
+  color: var(--c1);
+  transition:
+    background 0.4s 0.15s,
+    color 0.4s 0.15s;
+}
+
+.opt-container:hover .opt-image,
+.opt-container:focus-within .opt-image {
+  background: var(--c1);
+  color: var(--c5);
+}
+
+.opt-image svg {
+  width: 76px;
+  height: 76px;
+  transition: transform 0.6s var(--ease);
+}
+
+.opt-container:hover .opt-image svg {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+.opt-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.opt-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  transition: color 0.4s 0.15s;
+}
+
+.opt-description {
+  font-size: 0.88rem;
+  color: var(--c4);
+  transition: color 0.4s 0.15s;
+}
+
+.opt-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.opt-price {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  transition: color 0.4s 0.15s;
+}
+
+.opt-button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--c5);
+  color: var(--c1);
+  text-decoration: none;
+  transition:
+    transform 0.4s var(--ease),
+    background 0.4s,
+    color 0.4s;
+}
+
+.opt-button:hover {
+  transform: rotate(90deg) scale(1.1);
+}
+
+.opt-container:hover .opt-title,
+.opt-container:hover .opt-price,
+.opt-container:focus-within .opt-title,
+.opt-container:focus-within .opt-price {
+  color: var(--c1);
+}
+
+.opt-container:hover .opt-description,
+.opt-container:focus-within .opt-description {
+  color: var(--c2);
+}
+
+.opt-container:hover .opt-badge--ghost,
+.opt-container:focus-within .opt-badge--ghost {
+  border-color: var(--c2);
+  color: var(--c2);
+}
+
+.opt-container:hover .opt-button,
+.opt-container:focus-within .opt-button {
+  background: var(--c1);
+  color: var(--c5);
+}
+
+/* ============================ ERP ============================ */
+.svc-erp {
+  background: var(--c5);
+  color: var(--c1);
+}
+
+.svc-erp .eyebrow {
+  color: var(--c2);
+}
+
+.svc-erp .section-lead {
+  color: var(--c2);
+}
+
+.erp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.erp-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.erp-models {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.erp-model {
+  position: relative;
+  padding: 1.8rem 1.7rem;
+  border-radius: 24px;
+  background: var(--c1);
+  color: var(--c5);
+  box-shadow: 0 24px 50px rgba(236, 94, 39, 0.3);
+}
+
+.erp-model--alt {
+  background: var(--c2);
+  margin-left: 2.2rem;
+}
+
+.erp-tag {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--c4);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c4);
+}
+
+.erp-model--alt .erp-tag {
+  border-color: var(--c5);
+  color: var(--c5);
+}
+
+.erp-model h3 {
+  font-size: 1.4rem;
+}
+
+.erp-price {
+  margin: 0.5rem 0 1rem;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.erp-price small {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--c4);
+}
+
+.erp-model--alt .erp-price small {
+  color: var(--c5);
+}
+
+.erp-model ul {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+  color: var(--c5);
+}
+
+.erp-model li::marker {
+  color: var(--c4);
+}
+
+/* ============================ Marketing ============================ */
+.svc-marketing {
+  background:
+    radial-gradient(46rem 24rem at 100% 0%, rgba(253, 253, 241, 0.22), transparent 60%),
+    linear-gradient(180deg, var(--c2), var(--c1));
+}
+
+.mk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.mk-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(253, 253, 241, 0.35);
+  border-radius: 20px;
+  background: rgba(236, 94, 39, 0.5);
+}
+
+.mk-check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 12px;
+  background: var(--c5);
+  color: var(--c2);
+  font-size: 1rem;
+}
+
+.mk-item h3 {
+  margin-bottom: 0.3rem;
+  font-size: 1.05rem;
+}
+
+.mk-item p {
+  font-size: 0.9rem;
+  color: var(--c4);
+}
+
+.mk-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2.5rem;
+}
+
+/* ============================ Custom ============================ */
+.svc-custom {
+  background: var(--c1);
+}
+
+.cu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.cu-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.7rem;
+  border-top: 3px solid var(--c4);
+  border-radius: 6px 6px 22px 22px;
+  background: linear-gradient(180deg, rgba(236, 94, 39, 0.45), rgba(236, 94, 39, 0.2));
+}
+
+.cu-card h3 {
+  font-size: 1.2rem;
+}
+
+.cu-card p {
+  color: var(--c4);
+  font-size: 0.95rem;
+}
+
+.cu-card--cta {
+  align-items: flex-start;
+  border-top-color: var(--c5);
+  background: var(--c4);
+  color: var(--c1);
+}
+
+.cu-card--cta p {
+  flex: 1;
+  color: var(--c1);
+}
+
+/* ============================ Technology orbit (Uiverse · Darlley) ============================ */
+.svc-tech {
+  background:
+    radial-gradient(34rem 28rem at 75% 50%, rgba(236, 94, 39, 0.8), transparent 70%),
+    var(--c1);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.tech-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tech-info {
+  margin-top: 0.8rem;
+  padding: 1.3rem 1.5rem;
+  border-left: 4px solid var(--c4);
+  border-radius: 6px 18px 18px 6px;
+  background: rgba(236, 94, 39, 0.4);
+}
+
+.tech-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.tech-use {
+  margin-top: 0.3rem;
+  color: var(--c4);
+}
+
+.tech-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  list-style: none;
+}
+
+.tech-legend button {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(253, 253, 241, 0.5);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--c4);
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+
+.tech-legend button:hover,
+.tech-legend button.is-active {
+  background: var(--c5);
+  color: var(--c1);
+}
+
+.orbit-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.orbit {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.orbit-ring {
+  position: relative;
+  padding: 2.5rem; /* p-10 */
+  border: 2px dashed rgba(253, 253, 241, 0.6);
+  border-radius: 9999px;
+}
+
+.orbit-item {
+  position: absolute;
+  padding: 2px;
+  border: 1px solid rgba(253, 253, 241, 0.6);
+  border-radius: 9999px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.orbit-item span {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  border-radius: 9999px;
+  background: #FDFDF1;
+  transition: all 0.5s;
+}
+
+.orbit-item svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-item:hover,
+.orbit-item:active {
+  transform: scale(0.95);
+}
+
+.orbit-item.is-active {
+  border-color: #FDFDF1;
+  box-shadow:
+    0 0 0 4px rgba(253, 253, 241, 0.35),
+    0 0 24px rgba(253, 253, 241, 0.4);
+}
+
+.orbit-1 {
+  left: 45px;
+  top: -4px;
+}
+.orbit-2 {
+  right: 45px;
+  top: -4px;
+}
+.orbit-3 {
+  left: -1rem;
+  top: 5rem;
+}
+.orbit-4 {
+  right: -1rem;
+  top: 5rem;
+}
+.orbit-5 {
+  left: 0;
+  bottom: 2rem;
+}
+.orbit-6 {
+  right: 0;
+  bottom: 2rem;
+}
+.orbit-7 {
+  right: 40%;
+  bottom: -1rem;
+}
+
+.orbit-core {
+  z-index: 0;
+  display: block;
+  width: 200px;
+  height: 200px;
+  padding: 4px;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.orbit-core:hover {
+  border-color: rgba(253, 253, 241, 0.7);
+}
+
+.orbit-core div {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 25%, #EC5E27, #EC5E27 80%);
+  box-shadow: inset 0 0 30px rgba(253, 253, 241, 0.12);
+  transition: transform 0.5s;
+}
+
+.orbit-core:hover div,
+.orbit-core:active div {
+  transform: scale(0.95);
+}
+
+.orbit-core img {
+  width: 62%;
+  height: auto;
+}
+
+/* ============================ CTA ============================ */
+.svc-cta {
+  padding: 4rem 0;
+  background: var(--c4);
+  color: var(--c1);
+}
+
+.svc-cta-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+}
+
+.svc-cta h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+}
+
+.svc-cta p {
+  margin-top: 0.4rem;
+}
+
+.svc-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.svc-cta .btn--primary {
+  background: var(--c1);
+  color: var(--c5);
+  box-shadow: none;
+}
+
+.svc-cta .btn--ghost {
+  border-color: var(--c1);
+  color: var(--c1);
+}
+
+.svc-cta .btn--ghost:hover {
+  background: rgba(236, 94, 39, 0.12);
+}
+
+/* ============================ Responsive ============================ */
+@media (max-width: 1100px) {
+  .opt-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 920px) {
+  .erp-grid,
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+  .erp-model--alt {
+    margin-left: 0;
+  }
+  .mk-grid,
+  .cu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .opt-grid,
+  .mk-grid,
+  .cu-grid {
+    grid-template-columns: 1fr;
+  }
+  .opt-container {
+    max-width: 340px;
+    margin-inline: auto;
+  }
+  .svc-hero {
+    padding-top: 6.5rem;
+  }
+}

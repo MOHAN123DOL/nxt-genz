@@ -1,0 +1,588 @@
+/* ------------------------------------------------------------------
+   Contact page
+   · feedback card ........ Uiverse · catraco   (Tailwind classes converted to CSS)
+   · thank-you envelope ... Uiverse · SmookyDev (Tailwind classes converted to CSS)
+------------------------------------------------------------------- */
+
+.contact {
+  overflow-x: clip;
+}
+
+/* ============================ Hero ============================ */
+.ct-hero {
+  padding: 7.5rem 0 3rem;
+  background:
+    radial-gradient(40rem 22rem at 80% 0%, rgba(236, 94, 39, 0.9), transparent 70%),
+    var(--c1);
+}
+
+.ct-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.ct-hero h1 {
+  font-size: clamp(2.3rem, 5.4vw, 4.2rem);
+  font-weight: 800;
+}
+
+.ct-lead {
+  max-width: 56ch;
+  font-size: 1.08rem;
+  color: var(--c4);
+}
+
+/* ============================ Form + info ============================ */
+.ct-main {
+  padding-top: 2rem;
+  background: var(--c1);
+}
+
+.ct-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.ct-info {
+  display: grid;
+  gap: 1rem;
+}
+
+.ct-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(253, 253, 241, 0.4);
+  border-radius: 20px;
+  background: rgba(236, 94, 39, 0.35);
+  text-decoration: none;
+  transition:
+    transform 0.3s var(--ease),
+    background 0.3s,
+    border-color 0.3s;
+}
+
+.ct-card:hover {
+  transform: translateX(6px);
+  border-color: var(--c4);
+  background: rgba(236, 94, 39, 0.6);
+}
+
+.ct-ico {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--c5);
+  color: var(--c1);
+}
+
+.ct-ico svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ct-card small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c4);
+}
+
+.ct-card strong {
+  display: block;
+  font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+
+.ct-qr {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1rem 1.2rem;
+  border: 1.5px dashed var(--c4);
+  border-radius: 20px;
+}
+
+.ct-qr img {
+  width: 116px;
+  height: 116px;
+  border-radius: 12px;
+}
+
+.ct-qr p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.88rem;
+  color: var(--c4);
+}
+
+.ct-qr strong {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--c5);
+}
+
+.ct-form-wrap {
+  position: relative;
+}
+
+.ct-form,
+.ct-success {
+  padding: clamp(1.5rem, 3vw, 2.4rem);
+  border-radius: 28px;
+  background: var(--c5);
+  color: var(--c1);
+  box-shadow: 0 30px 70px rgba(236, 94, 39, 0.6);
+}
+
+.ct-form h2,
+.ct-success h2 {
+  margin-bottom: 1.4rem;
+  font-size: 1.7rem;
+}
+
+.ct-form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.ct-form h2 {
+  margin-bottom: 0.3rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+
+.fld {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fld > span {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c2);
+}
+
+.fld input,
+.fld select,
+.fld textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--c1);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--c1);
+  outline: none;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s,
+    background 0.25s;
+}
+
+.fld textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.fld input::placeholder,
+.fld textarea::placeholder {
+  color: rgba(236, 94, 39, 0.6);
+}
+
+.fld input:focus,
+.fld select:focus,
+.fld textarea:focus {
+  border-color: var(--c2);
+  background: rgba(253, 253, 241, 0.28);
+  box-shadow: 0 0 0 4px rgba(236, 94, 39, 0.2);
+}
+
+.fld [aria-invalid='true'] {
+  border-color: var(--c2);
+  box-shadow: 0 0 0 3px rgba(236, 94, 39, 0.35);
+}
+
+.fld em {
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--c1);
+}
+
+.fld em::before {
+  content: '⚠ ';
+}
+
+.ct-submit {
+  justify-self: start;
+  margin-top: 0.3rem;
+}
+
+.ct-fine {
+  font-size: 0.82rem;
+  color: var(--c2);
+}
+
+.ct-success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.ct-success h2 {
+  margin: 0;
+}
+
+.tick {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--c1);
+  color: var(--c5);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.ct-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+
+.btn--ghost-dark {
+  border-color: var(--c1);
+  background: transparent;
+  color: var(--c1);
+}
+
+.btn--ghost-dark:hover {
+  background: rgba(236, 94, 39, 0.1);
+}
+
+/* ============================ Feedback (Uiverse · catraco) ============================ */
+.ct-feedback {
+  background: linear-gradient(180deg, var(--c1), var(--c2) 130%);
+  border-top: 1px solid rgba(253, 253, 241, 0.25);
+}
+
+.fb-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.fb-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fb-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.fb-card {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.6rem;
+  border: 1px solid #EC5E27;
+  border-radius: 0.75rem;
+  background: #EC5E27;
+  font-size: 0.875rem;
+  box-shadow: 0 24px 50px rgba(236, 94, 39, 0.55);
+}
+
+.fb-title {
+  grid-column: span 6;
+  text-align: center;
+  color: #FDFDF1;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.fb-text {
+  grid-column: span 6;
+  height: 7rem;
+  padding: 0.5rem;
+  border: 1px solid #FDFDF1;
+  border-radius: 0.5rem;
+  background: #EC5E27;
+  color: #FDFDF1;
+  outline: none;
+  resize: none;
+  transition-duration: 300ms;
+}
+
+.fb-text::placeholder {
+  color: #FDFDF1;
+  opacity: 0.6;
+}
+
+.fb-text:focus {
+  border-color: #FDFDF1;
+}
+
+.fb-mood,
+.fb-send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: 1px solid #FDFDF1;
+  border-radius: 0.5rem;
+  background: #EC5E27;
+  fill: #FDFDF1;
+  transition-duration: 300ms;
+}
+
+.fb-mood {
+  grid-column: span 1;
+}
+
+.fb-send {
+  grid-column: span 2;
+  stroke: #FDFDF1;
+}
+
+.fb-mood:hover,
+.fb-send:hover {
+  border-color: #FDFDF1;
+}
+
+.fb-mood.is-on,
+.fb-mood:focus,
+.fb-send:focus {
+  background: #FDFDF1;
+  fill: #EC5E27;
+}
+
+.fb-send:focus {
+  stroke: #EC5E27;
+}
+
+.fb-gap {
+  grid-column: span 2;
+}
+
+.fb-status {
+  grid-column: span 6;
+  min-height: 1.3em;
+  padding: 0 0.2rem;
+  font-size: 0.82rem;
+  color: #FDFDF1;
+}
+
+.fb-status.error {
+  color: #FDFDF1;
+  font-weight: 700;
+}
+
+/* ============================ Envelope (Uiverse · SmookyDev) ============================ */
+.ct-thanks {
+  padding-bottom: clamp(5rem, 9vw, 8rem);
+  background:
+    radial-gradient(36rem 22rem at 50% 70%, rgba(236, 94, 39, 0.7), transparent 70%),
+    var(--c1);
+  border-top: 1px solid rgba(253, 253, 241, 0.25);
+}
+
+.thanks-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  text-align: center;
+}
+
+.thanks-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.envelope {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  aspect-ratio: 16 / 9;
+  background: #EC5E27;
+  outline: 2px solid #FDFDF1;
+  outline-offset: -1px;
+  transition: all 0.7s;
+}
+
+@media (min-width: 640px) {
+  .envelope {
+    width: 350px;
+  }
+}
+
+.env-letter {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 0.7rem 0;
+  background: #FDFDF1;
+  transition: all 0.3s;
+}
+
+.env-title {
+  color: #EC5E27;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.env-line {
+  padding: 0 1.25rem;
+  text-align: center;
+  font-size: 12px;
+  color: #EC5E27;
+}
+
+.env-line--serif {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.env-sign {
+  padding-top: 0.5rem;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #EC5E27;
+}
+
+.seal {
+  position: relative;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  border: 4px solid #EC5E27;
+  border-radius: 9999px;
+  background: #FDFDF1;
+  color: #EC5E27;
+  font-size: 10px;
+  font-weight: 700;
+  clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+  transition: all 1s;
+}
+
+.tp,
+.lft,
+.rgt,
+.btm {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.tp {
+  background: #EC5E27;
+  clip-path: polygon(50% 50%, 100% 0, 0 0);
+  transition: all 1s;
+}
+
+.lft {
+  background: #EC5E27;
+  clip-path: polygon(50% 50%, 0 0, 0 100%);
+  transition: all 0.7s;
+  box-shadow: inset 0 0 0 1px rgba(253, 253, 241, 0.0);
+}
+
+.rgt {
+  background: #EC5E27;
+  clip-path: polygon(50% 50%, 100% 0, 100% 100%);
+  transition: all 0.7s;
+}
+
+.btm {
+  background: #EC5E27;
+  clip-path: polygon(50% 50%, 100% 100%, 0 100%);
+  transition: all 0.7s;
+}
+
+/* The envelope is a "group": hovering or toggling it opens the flap. */
+.envelope:hover .env-letter,
+.envelope.is-open .env-letter {
+  transform: translateY(-4rem);
+  transition-duration: 1s;
+}
+
+.envelope:hover .seal,
+.envelope.is-open .seal {
+  opacity: 0;
+  transform: scale(0) rotate(180deg);
+}
+
+.envelope:hover .tp,
+.envelope.is-open .tp {
+  clip-path: polygon(50% 0%, 100% 0, 0 0);
+  transition-duration: 0.1s;
+}
+
+/* ============================ Responsive ============================ */
+@media (max-width: 980px) {
+  .ct-grid,
+  .fb-grid {
+    grid-template-columns: 1fr;
+  }
+  .ct-info {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ct-qr {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .ct-info {
+    grid-template-columns: 1fr;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .ct-submit {
+    justify-self: stretch;
+  }
+  .ct-hero {
+    padding-top: 6.5rem;
+  }
+}

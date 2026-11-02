@@ -1,0 +1,434 @@
+/* ------------------------------------------------------------------
+   Fixed top bar + radial page menu.
+   Radial menu: Uiverse · dexter-st — class names prefixed `rm-`,
+   colours mapped to the NXT GENZ palette.
+------------------------------------------------------------------- */
+
+@property --selected-angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
+}
+
+/* ---------- Top bar ---------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
+  background: linear-gradient(180deg, rgba(236, 94, 39, 0.95), rgba(236, 94, 39, 0.8));
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(253, 253, 241, 0.25);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+}
+
+.brand img {
+  height: 38px;
+  width: auto;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand-text strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--c5);
+}
+
+.brand-text em {
+  margin-top: 0.38rem;
+  font-style: normal;
+  font-size: 0.56rem;
+  letter-spacing: 0.44em;
+  color: var(--c4);
+}
+
+.header-cta {
+  padding: 0.65rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+/* ---------- Radial menu ---------- */
+.rm {
+  --options: 6;
+  --col-ring: #FDFDF1;
+  --col-btn-close: #FDFDF1;
+  --col-accent: #EC5E27;
+  --button-size: 44px;
+  --option-size: 34px;
+  --icon-size: 18px;
+  --icon-col: #EC5E27;
+  --ring-thickness: 36px;
+  --ring-dist: 12px;
+  --duration: 0.5s;
+  --easing: cubic-bezier(0.22, 1, 0.36, 1.15);
+
+  --ring-radius: calc(var(--button-size) / 2 + var(--ring-dist) + var(--ring-thickness) / 2);
+  --outer-radius: calc(var(--button-size) / 2 + var(--ring-dist) + var(--ring-thickness));
+  --selected: 1;
+  --selected-angle: calc(360deg / var(--options) * var(--selected));
+
+  position: fixed;
+  top: 50px;
+  left: calc(50% - var(--button-size) / 2);
+  z-index: 1100;
+  width: var(--button-size);
+  height: var(--button-size);
+  isolation: isolate;
+  filter: drop-shadow(0 6px 2px rgba(236, 94, 39, 0.25)) drop-shadow(0 12px 12px rgba(236, 94, 39, 0.3));
+}
+
+.rm-btn {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--col-ring);
+  background:
+    radial-gradient(circle at 50% -100%, rgba(253, 253, 241, 0.55) 0%, rgba(236, 94, 39, 0.1) 75%),
+    var(--col-accent);
+  box-shadow:
+    inset 0 -2px 1px rgba(236, 94, 39, 0.3),
+    inset 0 -4px 2px rgba(236, 94, 39, 0.2),
+    inset 0 8px 16px rgba(253, 253, 241, 0.3),
+    0 0 0 2px #FDFDF1,
+    0 4px 4px rgba(236, 94, 39, 0.35);
+  transition: 0.3s ease;
+}
+
+.rm-btn-svg {
+  width: 56%;
+  height: 56%;
+  color: #FDFDF1;
+  pointer-events: none;
+}
+
+.rm-btn .morph-line {
+  transition:
+    d 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.rm-btn:has(.rm-toggle:checked) .top {
+  d: path('M6 6 L18 18');
+}
+
+.rm-btn:has(.rm-toggle:checked) .middle {
+  d: path('M12 12 L12 12');
+  opacity: 0;
+}
+
+.rm-btn:has(.rm-toggle:checked) .bottom {
+  d: path('M6 18 L18 6');
+}
+
+/* Browsers without CSS `d` support: rotate the lines into a cross instead. */
+@supports not (d: path('M0 0')) {
+  .rm-btn:has(.rm-toggle:checked) .top {
+    transform: translateY(5px) rotate(45deg);
+  }
+  .rm-btn:has(.rm-toggle:checked) .bottom {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+}
+
+.rm-toggle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.rm-btn:hover {
+  background-color: #FDFDF1;
+}
+
+.rm-btn:active {
+  background-color: #EC5E27;
+}
+
+.rm-btn .rm-toggle:focus-visible {
+  outline: 2px solid #FDFDF1;
+  outline-offset: 4px;
+}
+
+.rm-btn:has(.rm-toggle:checked) {
+  background-color: var(--col-btn-close);
+}
+
+.rm-options {
+  position: absolute;
+  inset: calc(-1 * (var(--ring-thickness) + var(--ring-dist)));
+  z-index: 1;
+  border-radius: 50%;
+  color: #FDFDF1;
+  pointer-events: none;
+}
+
+.rm-option {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--option-size);
+  height: var(--option-size);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(calc(360deg / var(--options) * var(--i))) translateY(0px);
+  transition:
+    transform var(--duration) var(--easing),
+    opacity 0.25s ease,
+    background-color 0.25s ease;
+  transition-delay: calc(var(--i) * 0.025s);
+}
+
+.rm-option-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.rm-option-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transform: rotate(calc(-360deg / var(--options) * var(--i)));
+  pointer-events: none;
+}
+
+.rm-svg {
+  display: block;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--icon-col);
+  stroke-width: 1.5px;
+  color: var(--icon-col);
+  transition:
+    stroke 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Tooltip label — pill so it stays readable over any page background */
+.rm-option-inner::after {
+  content: attr(data-tooltip);
+  --angle: calc(360deg / var(--options) * var(--i));
+  --tooltip-gap: 0.5rem;
+  --side: round(nearest, sin(var(--angle)), 1);
+  --vertical: round(nearest, cos(var(--angle)), 1);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 4px 11px;
+  border: 1px solid #EC5E27;
+  border-radius: 999px;
+  background: #EC5E27;
+  color: #FDFDF1;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(
+    calc(-50% + var(--side) * (50% + var(--option-size) / 2 + var(--tooltip-gap))),
+    calc(-50% - (1 - abs(var(--side))) * var(--vertical) * (50% + var(--option-size) / 2 + var(--tooltip-gap)))
+  );
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+/* The top-most item (Contact) would put its label above the viewport — show it to the right instead. */
+.rm-option:nth-child(6) .rm-option-inner::after {
+  --side: 1;
+  --vertical: 0;
+}
+
+.rm-option:hover .rm-option-inner::after,
+.rm-option:focus-within .rm-option-inner::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rm-option:hover .rm-svg,
+.rm-option:focus-within .rm-svg {
+  stroke: #EC5E27;
+}
+
+.rm-option:has(input:focus-visible) {
+  outline: 2px solid var(--col-accent);
+  outline-offset: 3px;
+}
+
+.rm-option:has(input:checked) .rm-svg {
+  stroke: var(--col-ring);
+}
+
+.rm-ring {
+  position: absolute;
+  inset: calc(-1 * (var(--ring-thickness) + var(--ring-dist)));
+  z-index: -1;
+  border-radius: 50%;
+  -webkit-mask: radial-gradient(
+    circle,
+    #0000 calc(var(--button-size) / 2 + var(--ring-dist)),
+    #000 calc(var(--button-size) / 2 + var(--ring-dist) + 1px),
+    #000 calc(var(--outer-radius) - 1px),
+    #0000 var(--outer-radius)
+  );
+  mask: radial-gradient(
+    circle,
+    #0000 calc(var(--button-size) / 2 + var(--ring-dist)),
+    #000 calc(var(--button-size) / 2 + var(--ring-dist) + 1px),
+    #000 calc(var(--outer-radius) - 1px),
+    #0000 var(--outer-radius)
+  );
+  background:
+    radial-gradient(circle at 50% -100%, rgba(253, 253, 241, 0.6) 0%, rgba(236, 94, 39, 0.08) 75%),
+    conic-gradient(
+        rgba(253, 253, 241, 0.12) 0.25turn,
+        rgba(253, 253, 241, 0.22) 0.25turn 0.5turn,
+        rgba(253, 253, 241, 0.12) 0.5turn 0.75turn,
+        rgba(253, 253, 241, 0.22) 0.75turn
+      )
+      top left / 4px 4px repeat,
+    var(--col-ring);
+  transform: scale(0);
+  opacity: 0;
+  transition:
+    transform var(--duration) var(--easing),
+    opacity 0.3s ease;
+}
+
+.rm-light {
+  position: absolute;
+  inset: calc(-1 * (var(--ring-thickness) + var(--ring-dist)));
+  z-index: -1;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    from calc(-180deg / var(--options)),
+    #0000 0deg,
+    var(--col-accent) 1deg,
+    var(--col-accent) calc(360deg / var(--options) - 1deg),
+    #0000 calc(360deg / var(--options))
+  );
+  -webkit-mask: radial-gradient(
+    circle,
+    #0000 calc(var(--button-size) / 2 + var(--ring-dist)),
+    #000 calc(var(--button-size) / 2 + var(--ring-dist) + 1px),
+    #000 calc(var(--outer-radius) - 1px),
+    #0000 var(--outer-radius)
+  );
+  mask: radial-gradient(
+    circle,
+    #0000 calc(var(--button-size) / 2 + var(--ring-dist)),
+    #000 calc(var(--button-size) / 2 + var(--ring-dist) + 1px),
+    #000 calc(var(--outer-radius) - 1px),
+    #0000 var(--outer-radius)
+  );
+  transform: rotate(var(--selected-angle)) scale(0);
+  opacity: 0;
+  transition:
+    transform var(--duration) var(--easing),
+    opacity 0.3s ease;
+}
+
+.rm:has(.rm-toggle:checked) .rm-ring {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.rm:has(.rm-toggle:checked) .rm-light {
+  transform: rotate(var(--selected-angle)) scale(1);
+  opacity: 1;
+}
+
+.rm:has(.rm-toggle:checked) .rm-option {
+  transform: translate(-50%, -50%) rotate(calc(360deg / var(--options) * var(--i)))
+    translateY(calc(-1 * var(--ring-radius)));
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.rm:not(:has(.rm-toggle:checked)) .rm-option {
+  transition-delay: 0ms;
+}
+
+.rm:has(.rm-option:nth-child(1) .rm-option-input:checked) {
+  --selected: 1;
+}
+.rm:has(.rm-option:nth-child(2) .rm-option-input:checked) {
+  --selected: 2;
+}
+.rm:has(.rm-option:nth-child(3) .rm-option-input:checked) {
+  --selected: 3;
+}
+.rm:has(.rm-option:nth-child(4) .rm-option-input:checked) {
+  --selected: 4;
+}
+.rm:has(.rm-option:nth-child(5) .rm-option-input:checked) {
+  --selected: 5;
+}
+.rm:has(.rm-option:nth-child(6) .rm-option-input:checked) {
+  --selected: 6;
+}
+
+@media (max-width: 560px) {
+  .brand-text em {
+    display: none;
+  }
+  .brand-text strong {
+    font-size: 0.86rem;
+    letter-spacing: 0.08em;
+  }
+  .brand img {
+    height: 32px;
+  }
+  .header-cta {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.78rem;
+  }
+}

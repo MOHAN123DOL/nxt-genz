@@ -1,0 +1,78 @@
+/* ------------------------------------------------------------------
+   App-level styles: page shell, scroll-reveal and the shared
+   "futuristic pattern" texture (Uiverse · 3pple10).
+------------------------------------------------------------------- */
+
+.page {
+  min-height: 100vh;
+  padding-top: var(--header-h);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s ease var(--d, 0ms),
+    transform 0.7s var(--ease) var(--d, 0ms);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Futuristic pattern texture (Uiverse · 3pple10) ----------
+   The SVG filter (#advanced-texture) is defined once in App.jsx.
+   Colours changed from black/grey to the NXT GENZ palette.            */
+.texture-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.futuristic-pattern {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #EC5E27, rgba(236, 94, 39, 0.92), #EC5E27);
+  filter: url(#advanced-texture);
+  overflow: hidden;
+}
+
+.ripple-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 140%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    rgba(253, 253, 241, 0) 0 70px,
+    rgba(253, 253, 241, 0.07) 72px 74px
+  );
+  animation: ripple-drift 14s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes ripple-drift {
+  from {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.15);
+    opacity: 0.2;
+  }
+}

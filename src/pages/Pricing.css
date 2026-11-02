@@ -1,0 +1,773 @@
+/* ------------------------------------------------------------------
+   Pricing page
+   · plan card ........ Uiverse · abrahamcalsin
+   · offer ticket ..... Uiverse · zeeshan_2112
+------------------------------------------------------------------- */
+
+.pricing {
+  overflow-x: clip;
+}
+
+/* ============================ Hero ============================ */
+.pr-hero {
+  padding: 7.5rem 0 3rem;
+  text-align: center;
+  background:
+    radial-gradient(40rem 20rem at 50% 0%, rgba(253, 253, 241, 0.45), transparent 70%),
+    var(--c1);
+}
+
+.pr-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.pr-hero h1 {
+  font-size: clamp(2.3rem, 5.4vw, 4.2rem);
+  font-weight: 800;
+}
+
+.pr-lead {
+  max-width: 58ch;
+  font-size: 1.08rem;
+  color: var(--c4);
+}
+
+/* ============================ Tabs + plans ============================ */
+.pr-plans {
+  padding-top: 2rem;
+  background: var(--c1);
+}
+
+.pr-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 3rem;
+  padding: 0.4rem;
+  border: 1px solid rgba(253, 253, 241, 0.4);
+  border-radius: 999px;
+  background: rgba(236, 94, 39, 0.35);
+}
+
+.pr-tabs button {
+  padding: 0.7rem 1.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--c4);
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+
+.pr-tabs button:hover {
+  color: var(--c5);
+}
+
+.pr-tabs button.is-active {
+  background: var(--c5);
+  color: var(--c1);
+}
+
+.pr-panel-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 4.2rem;
+  text-align: center;
+}
+
+.pr-panel-head p {
+  max-width: 60ch;
+  color: var(--c4);
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 3.2rem 1.6rem;
+  align-items: stretch;
+  animation: plans-in 0.5s var(--ease);
+}
+
+@keyframes plans-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+.pr-note {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--c4);
+}
+
+/* --- plan card (Uiverse · abrahamcalsin) --- */
+.plan-card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem 1.6rem 1.6rem;
+  border-bottom: 4px solid #EC5E27;
+  border-radius: 10px;
+  background: #FDFDF1;
+  color: #EC5E27;
+  box-shadow: 0 14px 40px rgba(236, 94, 39, 0.55);
+  font-family: var(--font-body);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s;
+}
+
+.plan-card:hover {
+  transform: translateY(-6px);
+}
+
+.plan-card.is-popular {
+  border-bottom-color: #FDFDF1;
+  outline: 2px solid #FDFDF1;
+  outline-offset: 4px;
+}
+
+.plan-badge {
+  position: absolute;
+  top: -0.8rem;
+  right: 1.2rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  background: #EC5E27;
+  color: #FDFDF1;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.plan-card h2 {
+  margin-bottom: 15px;
+  font-family: var(--font-display);
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.plan-card h2 span {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: #EC5E27;
+}
+
+.etiquet-price {
+  position: relative;
+  width: calc(100% + 0.65rem);
+  margin-left: -0.65rem;
+  padding: 0.2rem 1.2rem;
+  border-radius: 5px 0 0 5px;
+  background: #FDFDF1;
+}
+
+.etiquet-price p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.4rem;
+  margin: 0;
+  padding-top: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.etiquet-price p sup {
+  margin-right: -0.15rem;
+  font-size: 15px;
+  font-weight: 400;
+  align-self: flex-start;
+  line-height: 2.4;
+}
+
+.etiquet-price p small {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.etiquet-price div {
+  position: absolute;
+  right: 0;
+  bottom: -23px;
+  z-index: -6;
+  width: 0;
+  height: 0;
+  border-top: 13px solid #EC5E27;
+  border-right: 13px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.plan-note {
+  margin-top: 1.1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #EC5E27;
+}
+
+.benefits-list {
+  flex: 1;
+  margin-top: 16px;
+}
+
+.benefits-list ul {
+  padding: 0;
+  font-size: 14px;
+  list-style: none;
+}
+
+.benefits-list ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+  color: #EC5E27;
+}
+
+.benefits-list ul li svg {
+  flex: none;
+  width: 0.9rem;
+  margin-top: 0.28rem;
+  fill: #EC5E27;
+}
+
+.benefits-list ul li span {
+  font-weight: 500;
+}
+
+.button-get-plan {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
+.button-get-plan a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 11px 15px;
+  border-radius: 5px;
+  background: #EC5E27;
+  color: #FDFDF1;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.button-get-plan a:hover {
+  transform: translateY(-3%);
+  box-shadow: 0 3px 10px rgba(236, 94, 39, 0.5);
+}
+
+.button-get-plan .svg-rocket {
+  width: 0.9rem;
+  margin-right: 10px;
+  fill: currentColor;
+}
+
+/* --- customisation table --- */
+.custom-rates {
+  margin-top: 4rem;
+  padding: 2rem;
+  border: 1px solid rgba(253, 253, 241, 0.4);
+  border-radius: 24px;
+  background: rgba(236, 94, 39, 0.3);
+}
+
+.custom-rates h3 {
+  font-size: 1.4rem;
+}
+
+.custom-rates > p {
+  margin: 0.3rem 0 1.4rem;
+  color: var(--c4);
+}
+
+.custom-rates dl {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 2.5rem;
+  margin: 0;
+}
+
+.custom-rates dl div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.2rem 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px dashed rgba(253, 253, 241, 0.45);
+}
+
+.custom-rates dt {
+  font-weight: 700;
+}
+
+.custom-rates dd {
+  margin: 0;
+  color: var(--c4);
+  font-weight: 600;
+}
+
+/* ============================ Offer + ticket (Uiverse · zeeshan_2112) ============================ */
+.pr-offer {
+  background: var(--c5);
+  color: var(--c1);
+}
+
+.pr-offer .eyebrow {
+  color: var(--c2);
+}
+
+.pr-offer .section-lead {
+  color: var(--c2);
+}
+
+.pr-offer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.pr-offer-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.offer-points {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.2rem;
+  font-weight: 600;
+}
+
+.offer-points li::marker {
+  color: var(--c2);
+}
+
+.pr-ticket {
+  display: flex;
+  justify-content: center;
+}
+
+.ticket-canvas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  text-decoration: none;
+}
+
+.ticket-wrapper {
+  --t-bg: #EC5E27;
+  --t-bg-light: #EC5E27;
+  --t-accent: #FDFDF1;
+  --t-accent-glow: rgba(253, 253, 241, 0.55);
+  --t-text-main: #FDFDF1;
+  --t-text-muted: #FDFDF1;
+  display: inline-block;
+  font-size: 15px;
+  perspective: 1000px;
+}
+
+.ticket {
+  position: relative;
+  width: 22em;
+  color: var(--t-text-main);
+  font-family: var(--font-display);
+  background: transparent;
+  filter: drop-shadow(0px 0px 10px rgba(236, 94, 39, 0.4));
+  box-shadow:
+    0 20px 40px rgba(236, 94, 39, 0.6),
+    0 0 0 1px rgba(253, 253, 241, 0.08);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.6s ease;
+}
+
+.ticket-wrapper:hover .ticket,
+.ticket-canvas:focus-visible .ticket {
+  transform: rotateX(5deg) rotateY(-10deg) scale(1.02);
+  box-shadow:
+    20px 20px 40px rgba(236, 94, 39, 0.55),
+    0 0 0 1px rgba(253, 253, 241, 0.15),
+    -5px -5px 20px var(--t-accent-glow);
+}
+
+.ticket::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  border-radius: 1em;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(253, 253, 241, 0.1) 45%,
+    rgba(253, 253, 241, 0.3) 50%,
+    rgba(253, 253, 241, 0.1) 55%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 250% 250%;
+  background-position: 100% 100%;
+  mix-blend-mode: overlay;
+  transition: background-position 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.ticket-wrapper:hover .ticket::after {
+  background-position: 0% 0%;
+}
+
+.t-main {
+  position: relative;
+  padding: 2em;
+  overflow: hidden;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  background:
+    radial-gradient(circle at bottom left, transparent 1em, var(--t-bg) 1.05em),
+    radial-gradient(circle at bottom right, transparent 1em, var(--t-bg) 1.05em);
+  background-size: 51% 100%;
+  background-position:
+    bottom left,
+    bottom right;
+  background-repeat: no-repeat;
+}
+
+.t-main::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(253, 253, 241, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(253, 253, 241, 0.18) 1px, transparent 1px);
+  background-size: 2em 2em;
+  transform: perspective(500px) rotateX(20deg) scale(1.5);
+  animation: grid-scroll 20s linear infinite;
+}
+
+@keyframes grid-scroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4em;
+  }
+}
+
+.t-content {
+  position: relative;
+  z-index: 1;
+}
+
+.t-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.t-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--t-text-main);
+  font-size: 1.2em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.t-logo svg {
+  width: 1.5em;
+  height: 1.5em;
+  fill: var(--t-accent);
+  filter: drop-shadow(0 0 5px var(--t-accent));
+  animation: logo-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes logo-pulse {
+  0% {
+    filter: drop-shadow(0 0 2px var(--t-accent));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px var(--t-accent)) brightness(1.2);
+  }
+}
+
+.t-type {
+  padding: 0.4em 0.8em;
+  border: 1px solid var(--t-accent);
+  border-radius: 99em;
+  color: var(--t-accent);
+  font-size: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.t-title {
+  margin-bottom: 0.2em;
+  background: linear-gradient(135deg, #FDFDF1 0%, #FDFDF1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5em;
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.t-subtitle {
+  margin-bottom: 2.5em;
+  color: var(--t-text-muted);
+  font-size: 0.9em;
+}
+
+.t-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5em;
+  margin-bottom: 1em;
+}
+
+.t-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.t-label {
+  color: var(--t-text-muted);
+  font-size: 0.6em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.t-value {
+  color: var(--t-text-main);
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.t-perforation {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 1em;
+}
+
+.t-perf-line {
+  flex-grow: 1;
+  height: 0;
+  margin: 0 1.5em;
+  border-top: 2px dashed rgba(253, 253, 241, 0.3);
+}
+
+.t-stub {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  background:
+    radial-gradient(circle at top left, transparent 1em, var(--t-bg-light) 1.05em),
+    radial-gradient(circle at top right, transparent 1em, var(--t-bg-light) 1.05em);
+  background-size: 51% 100%;
+  background-position:
+    top left,
+    top right;
+  background-repeat: no-repeat;
+}
+
+.t-barcode-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.t-barcode {
+  width: 10em;
+  height: 3em;
+  opacity: 0.85;
+  background: repeating-linear-gradient(
+    90deg,
+    #FDFDF1 0,
+    #FDFDF1 2px,
+    transparent 2px,
+    transparent 4px,
+    #FDFDF1 4px,
+    #FDFDF1 5px,
+    transparent 5px,
+    transparent 8px,
+    #FDFDF1 8px,
+    #FDFDF1 12px,
+    transparent 12px,
+    transparent 15px,
+    #FDFDF1 15px,
+    #FDFDF1 16px,
+    transparent 16px,
+    transparent 18px
+  );
+}
+
+.t-barcode-id {
+  color: #FDFDF1;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.7em;
+  letter-spacing: 0.12em;
+}
+
+.t-admit {
+  text-align: right;
+}
+
+.t-admit-text {
+  color: #FDFDF1;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.t-admit-num {
+  color: #FDFDF1;
+  font-size: 3em;
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 0 0 15px var(--t-accent-glow);
+}
+
+.ticket-wrapper:active .ticket {
+  transform: rotateX(15deg) rotateY(-5deg) scale(0.98);
+}
+
+.ticket-wrapper:active .t-stub {
+  opacity: 0.8;
+  transform: translateY(5px) rotateZ(2deg);
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* ============================ FAQ ============================ */
+.pr-faq {
+  background: linear-gradient(180deg, var(--c1), var(--c2) 160%);
+}
+
+.pr-faq-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.pr-faq-grid > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.faq-list details {
+  border: 1px solid rgba(253, 253, 241, 0.4);
+  border-radius: 18px;
+  background: rgba(236, 94, 39, 0.55);
+}
+
+.faq-list summary {
+  position: relative;
+  padding: 1.1rem 3rem 1.1rem 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: 1.2rem;
+  translate: 0 -50%;
+  font-size: 1.4rem;
+  color: var(--c4);
+  transition: rotate 0.3s;
+}
+
+.faq-list details[open] summary::after {
+  rotate: 45deg;
+}
+
+.faq-list details p {
+  padding: 0 1.3rem 1.2rem;
+  color: var(--c4);
+}
+
+/* ============================ Responsive ============================ */
+@media (max-width: 900px) {
+  .pr-offer-grid,
+  .pr-faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .custom-rates dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .pr-tabs {
+    border-radius: 24px;
+    width: 100%;
+  }
+  .pr-tabs button {
+    flex: 1 1 45%;
+    padding: 0.7rem 0.6rem;
+  }
+  .ticket-wrapper {
+    font-size: 12.5px;
+  }
+  .ticket-canvas {
+    padding: 1em 0;
+  }
+}
